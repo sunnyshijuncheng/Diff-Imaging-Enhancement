@@ -50,6 +50,8 @@ For testing, you can directly run:
 sh run_test.sh
 ```
 
+**Note:** Here, if you want to compare our patch fusion strategy with the traditional sampling strategy, you can modify run_test.sh to python `diff_image_enhancement/sample.py` to obatin the traditional sampling results.
+
 **Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) CPU @ 2.10GHz equipped with a single NVIDIA GEForce A100 GPU. Different environment 
 configurations may be required for different combinations of workstation and GPU. Due to the high memory consumption during the training phase, if your graphics card does not support large batch training, please reduce the configuration value of args (`batch_size`)
 
