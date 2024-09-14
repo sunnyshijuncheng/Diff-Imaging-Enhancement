@@ -50,18 +50,6 @@ For testing, you can directly run:
 sh run_test.sh
 ```
 
-If you need to compare with a randomly initialized network, you can comment out lines 63 and 64 in the `metaprocessing/meta_test/train.py` file as follows
-```
-# net.load_state_dict(torch.load(dir_load, map_location=device))
-# print(f'Model loaded from {dir_load}')
-```
-and then run:
-```
-sh run_meta_test.sh
-```
-
-**Note:** We emphasize that the training logs (for both meta-train and meta-test) is saved in the `runs/` file folder. You can use the `tensorboard --logdir=./` or extract the log to view the changes of the metrics as a function of epoch.
-
 **Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) CPU @ 2.10GHz equipped with a single NVIDIA GEForce A100 GPU. Different environment 
 configurations may be required for different combinations of workstation and GPU. Due to the high memory consumption during the training phase, if your graphics card does not support large batch training, please reduce the configuration value of args (`batch_size`)
 
