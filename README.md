@@ -1,3 +1,5 @@
+![LOGO](https://github.com/sunnyshijuncheng/Diff-Imaging-Enhancement/blob/main/asset/logo.jpg)
+
 Reproducible material for Generative Diffusion Model for Seismic Imaging Improvement of Sparsely Acquired Data and Uncertainty Quantification - Xingchen Shi, Shijun Cheng, Weijian Mao, and Wei Ouyang.
 
 # Project structure
