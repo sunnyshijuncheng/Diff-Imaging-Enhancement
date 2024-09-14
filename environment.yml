@@ -1,4 +1,4 @@
-name: meta-processing
+name: diff-image-enhancement
 channels:
   - pytorch
   - conda-forge
