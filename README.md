@@ -11,7 +11,7 @@ This repository is organized as follows:
 * :open_file_folder: **scripts**: set of shell scripts used to run training and testing
 
 ## Supplementary files
-To ensure reproducibility, we provide the the data set for training and testing.
+To ensure reproducibility, we provide the data set for training and testing.
 
 * **Training and Testing data set**
 Download the training and testing data set [here](https://drive.google.com/file/d/1VXcms_hpkMde7k41iuODtF33pOwHaU6b/view?usp=drive_link). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
