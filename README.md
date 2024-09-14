@@ -5,7 +5,7 @@ Reproducible material for Generative Diffusion Model for Seismic Imaging Improve
 # Project structure
 This repository is organized as follows:
 
-* :open_file_folder: **metaprocessing**: python code containing routines for Meta-Processing, which include two parts: meta-train and meta-test;
+* :open_file_folder: **diff_imaging_enhancement**: python code containing routines for Meta-Processing, which include two parts: meta-train and meta-test;
 * :open_file_folder: **asset**: folder containing logo;
 * :open_file_folder: **data**: folder to store dataset;
 * :open_file_folder: **results**: folder to store meta-initialization neural network model;
