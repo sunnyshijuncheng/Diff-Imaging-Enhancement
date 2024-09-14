@@ -10,7 +10,7 @@ echo 'Creating Package environment'
 # create conda env
 conda env create -f environment.yml
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate meta-processing
+conda activate diff-image-enhancement
 conda env list
 echo 'Created and activated environment:' $(which python)
 
