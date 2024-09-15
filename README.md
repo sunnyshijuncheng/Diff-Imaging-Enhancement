@@ -57,6 +57,9 @@ sh run_test.sh
 **Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) CPU @ 2.10GHz equipped with a single NVIDIA GEForce A100 GPU. Different environment 
 configurations may be required for different combinations of workstation and GPU. Due to the high memory consumption during the training phase, if your graphics card does not support large batch training, please reduce the configuration value of args (`batch_size`)
 
+## Acknowledgements
+This implementation is motivated from the paper [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2102.09672) and the code adapted from their [repository](https://github.com/openai/improved-diffusion). We are grateful for their open source code.
+
 ## Cite us 
 ```bibtex
 @article{shi2024generative,
@@ -65,4 +68,3 @@ configurations may be required for different combinations of workstation and GPU
   journal={arXiv preprint arXiv:2407.21683},
   year={2024}
 }
-
