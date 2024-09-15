@@ -14,7 +14,7 @@ This repository is organized as follows:
 To ensure reproducibility, we provide the data set for training and testing.
 
 * **Training and Testing data set**
-Download the training and testing data set [here](https://drive.google.com/file/d/1VXcms_hpkMde7k41iuODtF33pOwHaU6b/view?usp=drive_link). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
+Download the training and testing data set [here](https://drive.google.com/file/d/1uFrjIY0ey2aMtNormXO8ENA3Dqp10ael/view?usp=sharing). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
 
 ## Getting started :space_invader: :robot:
 To ensure reproducibility of the results, we suggest using the `environment.yml` file when creating an environment.
