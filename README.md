@@ -2,8 +2,6 @@
 
 Reproducible material for Generative Diffusion Model for Seismic Imaging Improvement of Sparsely Acquired Data and Uncertainty Quantification - Xingchen Shi, Shijun Cheng, Weijian Mao, and Wei Ouyang.
 
-This implementation is motivated from the paper [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2102.09672) and the code adapted from their [repository](https://github.com/openai/improved-diffusion). We are grateful for their open source code.
-
 # Project structure
 This repository is organized as follows:
 
