@@ -4,17 +4,18 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - cudatoolkit=11.6.0
-  - numpy=1.23.5
-  - python=3.10.9
-  - python_abi=3.10=3_cp310
-  - pytorch=1.12.0=py3.10_cuda11.6_cudnn8.3.2_0
+  - cudatoolkit
+  - numpy
+  - python=3.9
+  - python_abi
+  - pytorch
   - matplotlib
-  - scipy=1.10.0
-  - torchaudio=0.12.0
-  - torchvision=0.13.0
+  - scipy
+  - torchaudio
+  - torchvision
   - tqdm=4.64.1
   - pip=22.3.1
+  - blobfile
   - pip:
       - tensorboard==2.12.0
       - tensorboard-data-server==0.7.0
