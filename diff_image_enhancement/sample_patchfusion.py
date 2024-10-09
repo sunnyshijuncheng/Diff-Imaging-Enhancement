@@ -14,7 +14,7 @@ from code.datasets import _list_image_files_recursively
 import scipy.io as sio
 from code.train_util import parse_dataname_from_filename
 
-from code import dist_util, logger
+from code import logger
 from code.script_util import (
     NUM_CLASSES,
     model_and_diffusion_defaults,
@@ -45,7 +45,7 @@ def main():
         **args_to_dict(args, model_and_diffusion_defaults().keys())
     )
     model.load_state_dict(
-        dist_util.load_state_dict(f'{args.model_path}{(train_step):06d}.pt', map_location=device)
+        th.load(f'{args.model_path}{(train_step):06d}.pt', map_location=device)
     )
     model.to(device=device)
     model.eval()
@@ -78,7 +78,7 @@ def main():
     accumulated_weight = th.zeros((args.batch_size, nz_block, nx_block), dtype=th.float32).to(device=device)
 
     # load test data
-    dict = sio.loadmat(f'../dataset/test2/data.mat')
+    dict = sio.loadmat(f'../dataset/test/data.mat')
     sparse_np = dict['sparse']
     sparse_np = sparse_np/np.max(np.abs(sparse_np))
     nz_block, nx_block = sparse_np.shape
