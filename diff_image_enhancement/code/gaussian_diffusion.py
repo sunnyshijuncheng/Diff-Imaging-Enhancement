@@ -290,7 +290,7 @@ class GaussianDiffusion:
         # 这里的if判断表示模型的对数方差是可学习的
         # 可学习的又包含两种，一种是直接预测方法（ModelVarType.LEARNED）
         # 另一种是学习方法的范围（ModelVarType.LEARNED_RANGE）
-        # 预测范围的方法是在IDDPM文中14式，将反差表示为beta的反差分别乘以系数v和1-v相加后取一个指数函数exp
+        # 预测范围的方法是在IDDPM文中15式，将方差表示为beta的方差分别乘以系数v和1-v相加后取一个指数函数exp
         # 这里v即为学习的参数，其有一个范围
         if self.model_var_type in [ModelVarType.LEARNED, ModelVarType.LEARNED_RANGE]:
             assert model_output.shape == (B, C * 2, *x.shape[2:])
@@ -303,11 +303,11 @@ class GaussianDiffusion:
                 # 对预测的对数方差直接取一个指数就可以得到方差model_variance
                 model_variance = th.exp(model_log_variance)
             else:
-                # 在这个条件下，预测方差的范围（IDDPM文中14式），预测的范围在[-1, 1]之间
+                # 在这个条件下，预测方差的范围（IDDPM文中15式），预测的范围在[-1, 1]之间
                 # 式14中包含log(beta)和log(beta_bar)
                 # beta_bar在式10中给出，由于1-alpha_(t-1)_bar要小于1-alpha_(t)_bar
                 # 因此beta_bar要小于beta，所以这里min_log表示式14中的log(beta_bar)
-                # max_log表示14中的log(beta)
+                # max_log表示15中的log(beta)
                 min_log = _extract_into_tensor(
                     self.posterior_log_variance_clipped, t, x.shape
                 )
@@ -361,7 +361,7 @@ class GaussianDiffusion:
         # ModelMeanType.PREVIOUS_X表示直接预测均值，因此模型的输出model_output直接包含均值
         if self.model_mean_type == ModelMeanType.PREVIOUS_X:
             # 这里还计算了一个pred_xstart，它表示从预测的均值中计算x_0
-            # 根据式(10)，我们已经计算出来了均值u_t，也知道x_t，那么我就可以利用此式计算出x_0
+            # 根据式(11)，我们已经计算出来了均值u_t，也知道x_t，那么我就可以利用此式计算出x_0
             # 这里，计算出的x_0对于网络的训练过程是没有作用的，但是对于评估阶段是有作用的
             pred_xstart = process_xstart(
                 self._predict_xstart_from_xprev(x_t=x, t=t, xprev=model_output)
@@ -373,7 +373,7 @@ class GaussianDiffusion:
             # 表示直接预测x_0
             if self.model_mean_type == ModelMeanType.START_X:
                 pred_xstart = process_xstart(model_output)
-            # 表示直接预测噪声，这里需要通过预测的噪声进一步计算出x_0,所利用的式子为公式(13)
+            # 表示直接预测噪声，这里需要通过预测的噪声进一步计算出x_0,所利用的式子为公式(9)
             else:
                 pred_xstart = process_xstart(
                     self._predict_xstart_from_eps(x_t=x, t=t, eps=model_output)
@@ -397,7 +397,7 @@ class GaussianDiffusion:
             "pred_xstart": pred_xstart,
         }
 
-    # 从预测的噪声来计算x_0, 即IDDPM文章中公式13
+    # 从预测的噪声来计算x_0, 即IDDPM文章中公式9
     def _predict_xstart_from_eps(self, x_t, t, eps):
         assert x_t.shape == eps.shape
         return (
@@ -405,7 +405,7 @@ class GaussianDiffusion:
             - _extract_into_tensor(self.sqrt_recipm1_alphas_cumprod, t, x_t.shape) * eps
         )
 
-    # 公式10，从根据网络预测的x_(t-1)的均值xprev以及t时刻的分布x_t来计算x_0
+    # 公式11，从根据网络预测的x_(t-1)的均值xprev以及t时刻的分布x_t来计算x_0
     def _predict_xstart_from_xprev(self, x_t, t, xprev):
         assert x_t.shape == xprev.shape
         return (  # (xprev - coef2*x_t) / coef1
@@ -423,6 +423,7 @@ class GaussianDiffusion:
             - pred_xstart
         ) / _extract_into_tensor(self.sqrt_recipm1_alphas_cumprod, t, x_t.shape)
 
+    # 是否归一化time step
     def _scale_timesteps(self, t):
         if self.rescale_timesteps:
             return t.float() * (1000.0 / self.num_timesteps)
