@@ -65,15 +65,8 @@ This implementation is motivated from the paper [Improved Denoising Diffusion Pr
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
   title={Generative Diffusion Model for Seismic Imaging Improvement of Sparsely Acquired Data and Uncertainty Quantification}, 
   year={2024},
-  volume={},
+  volume={62},
   number={},
-  pages={1-1},
-  doi={10.1109/TGRS.2024.3476345}
-}
+  pages={1-17},
+  doi={10.1109/TGRS.2024.3476345}}
 
-@article{shi2024generative,
-  title={Generative Diffusion Model for Seismic Imaging Improvement of Sparsely Acquired Data and Uncertainty Quantification},
-  author={Shi, Xingchen and Cheng, Shijun and Mao, Weijian and Ouyang, Wei},
-  journal={arXiv preprint arXiv:2407.21683},
-  year={2024}
-}
