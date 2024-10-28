@@ -73,15 +73,15 @@ def main():
     gaussian_kernel = gaussian_kernel.to(device=device)
     gaussian_kernel = gaussian_kernel.repeat(args.batch_size, 1, 1)
 
-    # Initialize Accumulated Prediction and Weight Matrices
-    accumulated_result = th.zeros((args.batch_size, nz_block, nx_block), dtype=th.float32).to(device=device)
-    accumulated_weight = th.zeros((args.batch_size, nz_block, nx_block), dtype=th.float32).to(device=device)
-
     # load test data
     dict = sio.loadmat(f'../dataset/test/data.mat')
     sparse_np = dict['sparse']
     sparse_np = sparse_np/np.max(np.abs(sparse_np))
     nz_block, nx_block = sparse_np.shape
+    
+    # Initialize Accumulated Prediction and Weight Matrices
+    accumulated_result = th.zeros((args.batch_size, nz_block, nx_block), dtype=th.float32).to(device=device)
+    accumulated_weight = th.zeros((args.batch_size, nz_block, nx_block), dtype=th.float32).to(device=device)
 
     for i in range(0, nz_block - patch_size + 1, step_size):
         for j in range(0, nx_block - patch_size + 1, step_size):
