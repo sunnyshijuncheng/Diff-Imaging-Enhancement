@@ -90,7 +90,7 @@ def main():
             # numpy to tensor
             sparse = th.tensor(sparse, dtype = th.float32).unsqueeze(0).unsqueeze(1).to(device=device)
             # repeat condition batch_size times
-            sparse = sparse.repeat(args.batch_size times, 1, 1, 1)
+            sparse = sparse.repeat(args.batch_size, 1, 1, 1)
           
             _, _, w, h = sparse.shape
 
