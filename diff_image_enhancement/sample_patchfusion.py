@@ -94,7 +94,7 @@ def main():
           
             _, _, w, h = sparse.shape
 
-           sample, _, _ = sample_fn(
+            sample, _, _ = sample_fn(
                     model, sparse,
                     (args.batch_size, args.in_channels, w, h),
                     clip_denoised=args.clip_denoised,
