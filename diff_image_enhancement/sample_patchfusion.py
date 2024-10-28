@@ -35,10 +35,9 @@ def main():
 
     if not args.use_ddim:
         dir_output = f'./output/ddpm/step{train_step}/'
-        os.makedirs(dir_output, exist_ok=True)
     else:
         dir_output = f'./output/{args.timestep_respacing}/step{train_step}/'
-        os.makedirs(dir_output, exist_ok=True)
+    os.makedirs(dir_output, exist_ok=True)
 
     logger.log("creating model and diffusion...")
     model, diffusion = create_model_and_diffusion(
