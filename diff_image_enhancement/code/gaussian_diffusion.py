@@ -304,9 +304,9 @@ class GaussianDiffusion:
                 model_variance = th.exp(model_log_variance)
             else:
                 # 在这个条件下，预测方差的范围（IDDPM文中15式），预测的范围在[-1, 1]之间
-                # 式14中包含log(beta)和log(beta_bar)
+                # 式15中包含log(beta)和log(beta_bar)
                 # beta_bar在式10中给出，由于1-alpha_(t-1)_bar要小于1-alpha_(t)_bar
-                # 因此beta_bar要小于beta，所以这里min_log表示式14中的log(beta_bar)
+                # 因此beta_bar要小于beta，所以这里min_log表示式15中的log(beta_bar)
                 # max_log表示15中的log(beta)
                 min_log = _extract_into_tensor(
                     self.posterior_log_variance_clipped, t, x.shape
