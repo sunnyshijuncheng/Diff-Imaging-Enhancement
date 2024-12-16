@@ -15,8 +15,8 @@ dependencies:
   - torchvision
   - tqdm=4.64.1
   - pip=22.3.1
-  - blobfile
   - pip:
+      - blobfile==2.1.1
       - tensorboard==2.12.0
       - tensorboard-data-server==0.7.0
       - tensorboard-plugin-wit==1.8.1
